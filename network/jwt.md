@@ -86,3 +86,84 @@ JWT는 편리하지만 보안과 운영 측면에서 몇 가지 함정이 있다
 
 ## 요약
 JWT는 편리하지만 `페이로드 노출`, `시크릿 유출`, `탈취 위험`, `무효화 문제`, `none 알고리즘 공격` 등 여러 보안 함정을 갖는다. 따라서 강력한 키 관리, 짧은 만료 정책 + 리프레시 전략, 안전한 저장(원칙적으로 HttpOnly 쿠키), 토큰 회전·무효화 메커니즘, 알고리즘 검증 강화 등을 반드시 적용해야 한다.
+
+## 구현 예시 (Spring Security + Kotlin)
+### 1. JWT 유틸 클래스
+```kotlin
+@Component
+class JwtProvider(
+    @Value("\${jwt.secret}") private val secret: String,
+    @Value("\${jwt.expiration}") private val expiration: Long
+) {
+    private val key = Keys.hmacShaKeyFor(secret.toByteArray())
+
+    fun generateToken(userId: String, role: String): String {
+        val now = Date()
+        val expiry = Date(now.time + expiration)
+        return Jwts.builder()
+            .setSubject(userId)
+            .claim("role", role)
+            .setIssuedAt(now)
+            .setExpiration(expiry)
+            .signWith(key, SignatureAlgorithm.HS256)
+            .compact()
+    }
+
+    fun validateToken(token: String): Boolean =
+        try {
+            Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token)
+            true
+        } catch (e: Exception) {
+            false
+        }
+
+    fun getUserId(token: String): String =
+        Jwts.parserBuilder().setSigningKey(key).build()
+            .parseClaimsJws(token).body.subject
+}
+```
+
+### 2. JWT 필터
+```kotlin
+class JwtAuthFilter(
+    private val jwtProvider: JwtProvider
+) : OncePerRequestFilter() {
+    override fun doFilterInternal(
+        request: HttpServletRequest,
+        response: HttpServletResponse,
+        filterChain: FilterChain
+    ) {
+        val header = request.getHeader("Authorization")
+        if (header != null && header.startsWith("Bearer ")) {
+            val token = header.removePrefix("Bearer ")
+            if (jwtProvider.validateToken(token)) {
+                val userId = jwtProvider.getUserId(token)
+                val auth = UsernamePasswordAuthenticationToken(userId, null, emptyList())
+                SecurityContextHolder.getContext().authentication = auth
+            }
+        }
+        filterChain.doFilter(request, response)
+    }
+}
+```
+
+### 3. Security 설정
+```kotlin 
+@Configuration
+@EnableWebSecurity
+class SecurityConfig(
+    private val jwtProvider: JwtProvider
+) {
+    @Bean
+    fun filterChain(http: HttpSecurity): SecurityFilterChain {
+        http.csrf { it.disable() }
+            .authorizeHttpRequests {
+                it.requestMatchers("/auth/**").permitAll()
+                    .anyRequest().authenticated()
+            }
+            .addFilterBefore(JwtAuthFilter(jwtProvider), UsernamePasswordAuthenticationFilter::class.java)
+
+        return http.build()
+    }
+}
+```
