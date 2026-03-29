@@ -16,14 +16,14 @@ export default defineConfig({
         text: 'Algorithm',
         collapsed: false,
         items: [
-          { text: 'Binary Search Pattern', link: '/algorithm/binary search pattern' },
+          { text: 'Binary Search Pattern', link: '/algorithm/binary-search-pattern' },
         ]
       },
       {
         text: 'Backend',
         collapsed: false,
         items: [
-          { text: 'CSRF', link: '/backend/CSRF' },
+          { text: 'CSRF', link: '/backend/csrf' },
           { text: 'Kafka', link: '/backend/kafka' },
           { text: 'SPOF & HA', link: '/backend/spof-ha' },
           { text: 'Transactional Outbox', link: '/backend/transactional-outbox' },
@@ -33,8 +33,8 @@ export default defineConfig({
         text: 'Kotlin',
         collapsed: false,
         items: [
-          { text: 'Char.isDigit()', link: '/kotlin/Char.isDigit()' },
-          { text: 'Kotlin Value Class', link: '/kotlin/kotlin value class' },
+          { text: 'Char.isDigit()', link: '/kotlin/char-isdigit' },
+          { text: 'Kotlin Value Class', link: '/kotlin/kotlin-value-class' },
           { text: 'try-with-resources', link: '/kotlin/try-with-resources' },
         ]
       },
@@ -42,10 +42,10 @@ export default defineConfig({
         text: 'Network',
         collapsed: false,
         items: [
-          { text: 'Authentication vs Authorization', link: '/network/authentication vs authorization' },
-          { text: 'Cookie & Session', link: '/network/cookie, session' },
+          { text: 'Authentication vs Authorization', link: '/network/authentication-vs-authorization' },
+          { text: 'Cookie & Session', link: '/network/cookie-session' },
           { text: 'HTTP', link: '/network/http' },
-          { text: 'HTTP Idempotent', link: '/network/http idempotent' },
+          { text: 'HTTP Idempotent', link: '/network/http-idempotent' },
           { text: 'JWT', link: '/network/jwt' },
           { text: 'Proxy Server', link: '/network/proxy-server' },
           { text: 'Session', link: '/network/session' },

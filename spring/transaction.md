@@ -27,7 +27,7 @@ fun serviceA() {
     serviceB() // serviceB도 REQUIRED라면 같은 트랜잭션 안에서 실행
 }
 ```
-- 같은 트랜잭션으로 묶임 &rarr; 하나라도 실패 시 전체 롤백
+- 같은 트랜잭션으로 묶임 → 하나라도 실패 시 전체 롤백
 
 
 #### REQUIRES_NEW
@@ -81,7 +81,7 @@ fun parent() {
 |MySQL (InnoDB)|REPEATABLE_READ
 |PostgreSQL|READ_COMMITTED
 |Oracle|READ_COMMITTED
-|SQL Server|READ_COMMITTE
+|SQL Server|READ_COMMITTED
 
 
 ### 성능과 일관성의 Trade-off

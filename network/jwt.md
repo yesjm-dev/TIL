@@ -24,7 +24,7 @@ JWT는 Header.Payload.Signature 의 3부분으로 구성
         "exp": 1735689600
     }
     ```
-- **Signature**: Header + Payload 를 비밀키로 서명한 값 &rarr; 위변조 방지
+- **Signature**: Header + Payload 를 비밀키로 서명한 값 → 위변조 방지
 
 ## 동작 방식
 1. 사용자가 로그인 요청을 보냄
@@ -33,7 +33,7 @@ JWT는 Header.Payload.Signature 의 3부분으로 구성
 4. 서버는 토큰의 서명 검증 및 유효기간 확인 후 권한 처리
 
 ## 장점
-- `Stateless` &rarr; 서버에 세션 저장 불필요 (확장성 up)
+- `Stateless` → 서버에 세션 저장 불필요 (확장성 up)
 - 다양한 플랫폼/언어에서 쉽게 사용 가능
 - HTTP Header에 포함되므로 API 서버와 잘 어울린다
 

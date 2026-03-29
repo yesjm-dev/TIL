@@ -87,7 +87,7 @@ class SecurityConfig {
 ```html
 <input type="hidden" name="_csrf" value="토큰값"/>
 ```
-</br>
+<br>
 
 2. SPA (쿠키 기반 인증)
 ```kotlin
@@ -110,7 +110,7 @@ class SecurityConfig {
 - 서버가 XSRF-TOKEN 쿠키 발급.
 - JS 클라이언트가 이 값을 읽어 X-XSRF-TOKEN 헤더로 매 요청에 추가.
 
-</br>
+<br>
 
 3. REST API (JWT, Stateless)
 ```kotlin
@@ -128,11 +128,11 @@ class SecurityConfig {
     }
 }
 ```
-</br>
+<br>
 
 ### 정리
-- 세션 기반 인증 &rarr; CSRF 기본 활성화 (폼 hidden 필드 or 헤더 전송 필요).
-- SPA + 세션 쿠키 &rarr; CookieCsrfTokenRepository 사용.
-- JWT 기반 API &rarr; CSRF 비활성화 (csrf().disable()), 대신 XSS 방어 중요.
+- 세션 기반 인증 → CSRF 기본 활성화 (폼 hidden 필드 or 헤더 전송 필요).
+- SPA + 세션 쿠키 → CookieCsrfTokenRepository 사용.
+- JWT 기반 API → CSRF 비활성화 (csrf().disable()), 대신 XSS 방어 중요.
 
 즉, Spring Security에서 CSRF는 세션 쿠키 기반 인증일 때만 켜져 있고, 토큰 기반 인증에서는 보통 꺼버리는 게 표준

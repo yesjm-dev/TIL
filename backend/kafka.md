@@ -3,7 +3,7 @@
 Apache Kafka는 LinkedIn에서 개발하고 Apache Software Foundation에 기부한 **분산 이벤트 스트리밍 플랫폼**이다.
 대용량의 실시간 데이터를 높은 처리량(high throughput)과 낮은 지연(low latency)으로 전송·저장·처리할 수 있다.
 
-</br>
+<br>
 
 ## 왜 Kafka인가?
 
@@ -19,7 +19,7 @@ Apache Kafka는 LinkedIn에서 개발하고 Apache Software Foundation에 기부
 | 메시지 라우팅 | 유연 (Exchange, Routing Key) | 단순 (Topic 기반) |
 | 적합한 상황 | 작업 큐, 복잡한 라우팅 | 대용량 스트리밍, 이벤트 소싱 |
 
-</br>
+<br>
 
 ## 핵심 구성 요소
 
@@ -96,7 +96,7 @@ Kafka 클러스터를 구성하는 개별 서버(노드)이다.
 - **ZooKeeper**: 기존에 클러스터 메타데이터 관리, 리더 선출 등을 담당
 - **KRaft** (Kafka Raft): Kafka 3.x부터 ZooKeeper 없이 자체적으로 메타데이터를 관리하는 모드 (Kafka 4.0부터 ZooKeeper 완전 제거)
 
-</br>
+<br>
 
 ## Kafka가 빠른 이유
 
@@ -125,7 +125,7 @@ Producer와 Consumer 모두 메시지를 묶어서(batch) 처리한다.
 Producer에서 메시지를 압축(gzip, snappy, lz4, zstd)하여 전송하고, Broker는 압축된 채로 저장한다.
 네트워크 대역폭과 디스크 사용량을 절감한다.
 
-</br>
+<br>
 
 ## 복제(Replication)와 장애 대응
 
@@ -150,7 +150,7 @@ Producer에서 메시지를 압축(gzip, snappy, lz4, zstd)하여 전송하고, 
 | `acks=1` | Leader 기록 완료 시 응답 | Leader 장애 시 유실 가능 |
 | `acks=all` | 모든 ISR 기록 완료 시 응답 | 가장 안전, 지연 증가 |
 
-</br>
+<br>
 
 ## 메시지 전달 보장 (Delivery Semantics)
 
@@ -233,7 +233,7 @@ DO UPDATE SET quantity = 10;
 | 상태 덮어쓰기 (재고 동기화 등) | Upsert |
 - Kafka Streams에서는 `processing.guarantee=exactly_once_v2`로 활성화
 
-</br>
+<br>
 
 ## Consumer Group과 Rebalancing
 
@@ -256,7 +256,7 @@ Consumer Group 내에서 Partition 할당을 재조정하는 과정이다.
 - `session.timeout.ms`, `heartbeat.interval.ms`, `max.poll.interval.ms` 튜닝으로 불필요한 Rebalancing 방지
 - **Static Group Membership** (`group.instance.id` 설정)으로 일시적 이탈에 의한 Rebalancing 방지 가능
 
-</br>
+<br>
 
 ## Offset 관리
 
@@ -272,7 +272,7 @@ Consumer는 자신이 어디까지 읽었는지를 Offset으로 관리한다.
 - `__consumer_offsets`라는 내부 Topic에 저장
 - Consumer Group별, Topic-Partition별로 마지막 커밋된 Offset 기록
 
-</br>
+<br>
 
 ## Consumer Lag
 
@@ -306,7 +306,7 @@ Partition 0:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 - **Partition 수 증가**로 병렬 처리 확장
 - 모니터링 도구: `kafka-consumer-groups.sh --describe`, Burrow, Grafana + Prometheus
 
-</br>
+<br>
 
 ## Dead Letter Topic (DLT)
 
@@ -347,7 +347,7 @@ class KafkaConfig {
 - 기본 DLT 토픽 이름: `{원본 토픽명}.DLT`
 - 재시도 간격, 횟수, 백오프 전략 등을 커스터마이징 가능
 
-</br>
+<br>
 
 ## Partition 수 결정 기준
 
@@ -381,7 +381,7 @@ Consumer 1개 처리 능력: 10,000 msg/s
 - Broker 수의 배수로 설정하면 Partition이 균등하게 분산됨
 - 확신이 없다면 약간 넉넉하게 잡는 것이 안전 (줄일 수 없으므로)
 
-</br>
+<br>
 
 ## Kafka Connect
 
@@ -392,7 +392,7 @@ Consumer 1개 처리 능력: 10,000 msg/s
 - 별도 코드 작성 없이 설정만으로 데이터 파이프라인 구축 가능
 - 대표적인 Connector: Debezium(CDC), JDBC Connector, S3 Sink 등
 
-</br>
+<br>
 
 ## Kafka Streams
 
@@ -403,5 +403,5 @@ Kafka 내장 스트림 처리 라이브러리이다.
 - Exactly-once 처리 보장 가능
 - Spark Streaming, Flink과의 차이: 별도 인프라 불필요, 경량
 
-</br>
+<br>
 
