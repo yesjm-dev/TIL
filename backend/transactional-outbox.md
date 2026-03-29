@@ -39,7 +39,7 @@ DB 트랜잭션 안에서 비즈니스 데이터 + 이벤트 메시지를 Outbox
     - 다른 서비스는 브로커로부터 이벤트를 구독해 동작 수행
 
 ## DB 스키마 예시
-```database
+```sql
 CREATE TABLE outbox_event (
   id BIGINT PRIMARY KEY AUTO_INCREMENT,
   aggregate_type VARCHAR(100),

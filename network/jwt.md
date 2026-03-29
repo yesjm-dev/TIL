@@ -29,7 +29,7 @@ JWT는 Header.Payload.Signature 의 3부분으로 구성
 ## 동작 방식
 1. 사용자가 로그인 요청을 보냄
 2. 서버가 사용자 검증 후 JWT 발급
-3. 클라이언트는 JWT를 Authorization 헤더(Bearer <token>)에 담아 요청
+3. 클라이언트는 JWT를 Authorization 헤더(`Bearer <token>`)에 담아 요청
 4. 서버는 토큰의 서명 검증 및 유효기간 확인 후 권한 처리
 
 ## 장점
