@@ -23,9 +23,7 @@ export default defineConfig({
         text: 'Backend',
         collapsed: false,
         items: [
-          { text: 'CSRF', link: '/backend/csrf' },
           { text: 'Kafka', link: '/backend/kafka' },
-          { text: 'SPOF & HA', link: '/backend/spof-ha' },
           { text: 'Transactional Outbox', link: '/backend/transactional-outbox' },
         ]
       },
@@ -42,13 +40,22 @@ export default defineConfig({
         text: 'Network',
         collapsed: false,
         items: [
-          { text: 'Authentication vs Authorization', link: '/network/authentication-vs-authorization' },
-          { text: 'Cookie & Session', link: '/network/cookie-session' },
           { text: 'HTTP', link: '/network/http' },
           { text: 'HTTP Idempotent', link: '/network/http-idempotent' },
-          { text: 'JWT', link: '/network/jwt' },
-          { text: 'Proxy Server', link: '/network/proxy-server' },
+          { text: 'Cookie & Session', link: '/network/cookie-session' },
           { text: 'Session', link: '/network/session' },
+          { text: 'JWT', link: '/network/jwt' },
+          { text: 'Authentication vs Authorization', link: '/network/authentication-vs-authorization' },
+          { text: 'CSRF', link: '/network/csrf' },
+          { text: 'Proxy Server', link: '/network/proxy-server' },
+        ]
+      },
+      {
+        text: 'Infra',
+        collapsed: false,
+        items: [
+          { text: 'SPOF & HA', link: '/infra/spof-ha' },
+          { text: 'VIP (Virtual IP)', link: '/infra/virtual-ip' },
         ]
       },
       {
