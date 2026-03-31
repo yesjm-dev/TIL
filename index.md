@@ -15,6 +15,8 @@ features:
     details: 백엔드 핵심 개념
   - title: Kotlin
     details: Kotlin 언어 특성
+  - title: Infra
+    details: 인프라 및 고가용성
   - title: Network
     details: 네트워크 프로토콜과 보안
   - title: Spring

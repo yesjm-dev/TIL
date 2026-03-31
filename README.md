@@ -2,7 +2,7 @@
 
 매일 배운 것을 기록합니다.
 
-> https://todayilearned-9yqrgm9hx-yesjm-devs-projects.vercel.app/
+> https://til-henna.vercel.app/
 
 ![demo](demo.gif)
 
