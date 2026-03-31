@@ -56,6 +56,8 @@ export default defineConfig({
         items: [
           { text: 'SPOF & HA', link: '/infra/spof-ha' },
           { text: 'VIP (Virtual IP)', link: '/infra/virtual-ip' },
+          { text: 'DNS', link: '/infra/dns' },
+          { text: 'Load Balancer', link: '/infra/load-balancer' },
         ]
       },
       {

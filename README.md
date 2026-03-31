@@ -16,6 +16,8 @@
 ## Infra
 - [SPOF & HA](infra/spof-ha.md)
 - [VIP (Virtual IP)](infra/virtual-ip.md)
+- [DNS](infra/dns.md)
+- [Load Balancer](infra/load-balancer.md)
 
 ## Kotlin
 - [Char.isDigit()](kotlin/char-isdigit.md)
